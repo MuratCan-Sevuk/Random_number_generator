@@ -1,55 +1,44 @@
-Rastgele Sayı Üretici (Java)
 
-Bu proje, Java'da rastgele sayılar üretmek için geliştirilmiş özel bir sınıftır. Rastgele sınıfı, belirli sınırlar arasında veya belirli bir kök değer (root) ile rastgele sayılar oluşturabilir.
+# **Rastgele Sayı Üretici (Rastgele Class)**
 
-Bunu yaparken  sistem zamanını kullanır.(modunu alır) 
+Bu Java sınıfı, farklı parametreler kullanarak rastgele sayılar üretmek için çeşitli yöntemler sunar. Kullanıcı, belirli bir aralıkta veya sınırsız şekilde rastgele sayılar elde edebilir.
 
---Özellikler--
+## **Özellikler:**
 
--Belirtilen Üst Sınıra Kadar Rastgele Sayı Üretimi
+* **`rastgele(int sinir)`**: Bu metot, verilen `sinir` değeri kadar 0 ile sinir arasında rastgele bir sayı döndürür.
+* **`rastgele(int altSinir, int ustSinir)`**: Bu metot, verilen `altSinir` ve `ustSinir` arasındaki sayılar arasında rastgele bir sayı döndürür.
+* **`rastgele()`**: Bu metot, `2^17` (131072) kadar bir sayı aralığında rastgele bir sayı üretir. Sayı, `2^16` (65536) bir offset ile düzeltilmiştir.
+* **`rastgele(int root, int altSinir, int ustSinir)`**: Bu metot, belirli bir `root` değeriyle, `altSinir` ve `ustSinir` arasındaki sayılar arasında rastgele bir sayı üretir.
 
--Belirtilen Alt ve Üst Sınır Arasında Rastgele Sayı Üretimi
+## **Gereksinimler:**
 
--Negatif ve Pozitif Değerler Arasında Rastgele Sayı Üretimi
+* Java 8 veya daha yeni bir sürüm gereklidir.
 
--Özel Kök Değeri (root) ile Rastgele Sayı Üretimi
+## **Kullanım:**
 
---Kullanım--
+1. `Rastgele` sınıfını kullanarak rastgele sayılar üretmek için aşağıdaki örneği inceleyebilirsiniz.
 
-1. rastgele(int sinir)
-
-Belirtilen sınır içinde (0 dahil, sınır hariç) rastgele bir sayı döndürür.
-
+```java
 Rastgele random = new Rastgele();
-System.out.println(random.rastgele(100)); // 0-99 arasında bir sayı üretir
+System.out.println(random.rastgele(24,45)); // 24 ile 45 arasındaki rastgele sayıyı döndürür
+```
 
-2. rastgele(int altSinir, int ustSinir)
+2. İhtiyacınıza göre farklı `rastgele()` metodlarını kullanabilirsiniz:
 
-Belirtilen alt ve üst sınır arasında rastgele bir sayı üretir.
+   * `random.rastgele(10)` ile 0 ile 10 arasında rastgele bir sayı alabilirsiniz.
+   * `random.rastgele(5, 50)` ile 5 ile 50 arasındaki rastgele bir sayı alabilirsiniz.
 
-System.out.println(random.rastgele(10, 50)); // 10 ile 49 arasında bir sayı üretir
+## **Açıklamalar:**
 
-3. rastgele()
+* **Sayı Üretimi:** Rastgele sayılar üretirken, `System.currentTimeMillis()` fonksiyonu kullanılarak zaman tabanlı bir sayı üretme işlemi yapılır. Bu, sayıların rastgele ve genellikle öngörülemez olmasını sağlar.
+* **Modül Hesaplama:** Üretilen sayı, belirtilen aralığa göre modüler bir hesaplama ile ayarlanır.
 
-Varsayılan olarak ±16384 (2^16) arasında rastgele bir sayı üretir.
+## **Örnek Çıktı:**
 
-System.out.println(random.rastgele());
-
-4. rastgele(int root, int altSinir, int ustSinir)
-
-Belirtilen bir kök (root) ile rastgele bir sayı üretir.
-
-System.out.println(random.rastgele(1234, 5, 30)); //5 ile 29 arasında kökü kullanarak random sayı üretir .Kodu her çalıştırmada kök değişmediği için aynı random sayıyı döndürür.
-
---Çalıştırma--
-
-Bu sınıfı çalıştırmak için aşağıdaki adımları izleyin:
-
-Rastgele.java dosyasını indirin veya kopyalayın.
-
-Bir Java derleyicisi veya IDE (IntelliJ, Eclipse, VS Code vb.) kullanarak çalıştırın.
-
---Lisans--
-
-Bu proje MIT lisansı ile lisanslanmıştır. Dilediğiniz gibi kullanabilir ve geliştirebilirsiniz.
+```java
+Rastgele random = new Rastgele();
+System.out.println(random.rastgele(10));  // Çıktı: 0 ile 10 arasında bir sayı
+System.out.println(random.rastgele(5, 50));  // Çıktı: 5 ile 50 arasında bir sayı
+System.out.println(random.rastgele());  // Çıktı: -32768 ile 32767 arasında bir sayı
+```
 
